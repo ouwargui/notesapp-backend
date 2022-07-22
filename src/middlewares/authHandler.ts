@@ -1,5 +1,6 @@
-import {NextFunction, Request, response, Response} from 'express';
+import {NextFunction, Request, Response} from 'express';
 import {verify} from 'jsonwebtoken';
+import {JWT_SECRET} from '../config/env';
 
 export async function authHandler(
   req: Request,
@@ -14,10 +15,10 @@ export async function authHandler(
     });
   }
 
-  const [, token] = authHeader.split(' ');
+  const token = authHeader.split(' ')[1];
 
   try {
-    const {sub} = verify(token, process.env.JWT_KEY!);
+    const {sub} = verify(token, JWT_SECRET!);
 
     req.user_id = sub as string;
 
