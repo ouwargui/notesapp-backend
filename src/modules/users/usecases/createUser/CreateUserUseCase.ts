@@ -1,3 +1,4 @@
+import {hash} from 'bcrypt';
 import {User} from '../../models/User';
 import {IUsersRepository} from '../../repositories/IUsersRepository';
 
@@ -19,10 +20,18 @@ class CreateUserUseCase {
       throw new Error('Missing required fields');
     }
 
+    const userFound = await this.usersRepository.findByEmail(email);
+
+    if (userFound) {
+      throw new Error('User already exists');
+    }
+
+    const hashPassword = await hash(password, 10);
+
     const user = await this.usersRepository.create({
       name,
       email,
-      password,
+      password: hashPassword,
     });
 
     return user;

@@ -22,6 +22,16 @@ class UsersRepository implements IUsersRepository {
 
     return userCreated;
   }
+
+  async findByEmail(email: string): Promise<User | null> {
+    const user = await this.db.user.findUnique({
+      where: {
+        email,
+      },
+    });
+
+    return user;
+  }
 }
 
 export default UsersRepository;
