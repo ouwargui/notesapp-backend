@@ -28,7 +28,8 @@
         "lines-between-class-members": "off",
         "camelcase": "off",
         "no-use-before-define": "off",
-        "class-methods-use-this": "off"
+        "class-methods-use-this": "off",
+        "@typescript-eslint/no-non-null-assertion": "off"
     },
     "settings": {
         "import/resolver": {

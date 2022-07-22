@@ -1,5 +1,9 @@
+import 'dotenv/config';
 import express from 'express';
+import {checkEnvs} from './config/env';
 import router from './routes';
+
+checkEnvs();
 
 const app = express();
 app.use(express.json());
