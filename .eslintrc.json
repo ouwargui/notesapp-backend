@@ -27,7 +27,8 @@
         "import/extensions": "off",
         "lines-between-class-members": "off",
         "camelcase": "off",
-        "no-use-before-define": "off"
+        "no-use-before-define": "off",
+        "class-methods-use-this": "off"
     },
     "settings": {
         "import/resolver": {
